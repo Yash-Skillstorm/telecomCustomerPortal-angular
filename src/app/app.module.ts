@@ -7,17 +7,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { UserComponent } from './user/user.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    LoginComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,   
     AppRoutingModule,
     MatTabsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

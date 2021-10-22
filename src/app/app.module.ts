@@ -10,12 +10,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AccountsummaryComponent } from './accountsummary/accountsummary.component';
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     LoginComponent,
     RegistrationComponent,
+    AccountsummaryComponent,
   ],
   imports: [
     BrowserModule,   

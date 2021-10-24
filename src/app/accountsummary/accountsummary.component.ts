@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Plan } from '../model/plan.model';
 import { Summary } from '../model/summary.model';
 import { PlanService } from '../services/plan.service';
+import { SummaryService } from '../services/summary.service';
 
 @Component({
   selector: 'app-accountsummary',
@@ -10,6 +11,8 @@ import { PlanService } from '../services/plan.service';
   styleUrls: ['./accountsummary.component.css']
 })
 export class AccountsummaryComponent implements OnInit {
+  
+  @Input() Array: any;
 
   userId: any;
   plans!: Plan[];
@@ -18,7 +21,7 @@ export class AccountsummaryComponent implements OnInit {
   fakeArray: Summary[] = [];
   headers!: [] | any;
   price: number = 0;
-  constructor(private planService: PlanService, private activeRoute: ActivatedRoute) { }
+  constructor(private planService: PlanService,private summaryService: SummaryService, private router: Router, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     
@@ -28,14 +31,14 @@ export class AccountsummaryComponent implements OnInit {
       //   this.plans = data;
       //   console.log(data);
       // });
-      this.planService.getPlanDeviceBuUserID().subscribe(data => {
+      this.summaryService.getPlanDeviceBuyUserID().subscribe(data => {
         this.planService.getAllPlans().subscribe(planData => {
 
           planData.map(planitem => {
             let filterdata = data.filter(item => {
               return item.planName == planitem.planName
             })
-            console.log(filterdata);
+            
             if(filterdata.length != 0){
               this.deviceArray.push({
                 planId: planitem.id, planName: planitem.planName, device: filterdata, deviceLimit: planitem.deviceLimit, price: planitem.price
@@ -43,11 +46,14 @@ export class AccountsummaryComponent implements OnInit {
               this.price += planitem.price;
             }
           });
-          this.fakeArray = this.deviceArray;         
-          console.log(planData);
-          console.log(data);
+          this.fakeArray = this.deviceArray;        
+          
         });
       });
     });
+  }
+
+  goToPage(pageName:string){
+    this.router.navigate([`${pageName}`]);
   }
 }

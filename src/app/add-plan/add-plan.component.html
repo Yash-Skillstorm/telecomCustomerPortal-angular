@@ -1,0 +1,65 @@
+<div class="card-container">
+    <div class="row-md-6">
+        <div class="col-md-8 offset-md-1 mt-5">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card full-width-card" style="width: 25rem;">
+                        <div class="card-header">
+                            Upgrade Plan
+                        </div>
+                        <div class="card-body">
+                            <mat-tab-group [selectedIndex]="selected">
+                                <mat-tab label="Select Plan" [disabled]='disabledVar1'>
+                                    <div *ngFor="let planArray of plan">
+                                        <div style="margin-top: 10px;" for="male" class="card">
+                                            <div class="card-body">
+                                                <h3 class="card-header">{{planArray.planName}}</h3>
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">Price: {{planArray.price}}</li>
+                                                    <li class="list-group-item">Device Limit: {{planArray.deviceLimit}}
+                                                    </li>
+                                                </ul>
+                                                <button type="button" style="float: right;"
+                                                    (click)='getPlanId(planArray); selected = 1'
+                                                    class="btn btn-light">Select</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </mat-tab>
+                                <mat-tab label="Select Device" [disabled]='disabledVar2'>
+                                    <section style="margin-left: 15px;" class="example-section" [formGroup]="devices">
+
+                                        <div *ngFor=" let deviceItem of DeviceArray">
+                                            <mat-checkbox style="font-size: 15px;" [formControlName]=deviceItem.id
+                                                (change)="onCheckboxChange($event,deviceItem)">{{deviceItem.deviceName}}
+                                            </mat-checkbox>
+                                            <!-- <input type="number" [formControlName]="'text'+deviceItem.Id" class="form-control"  placeholder="number" > -->
+
+                                            <mat-form-field style="margin-left: 10px;" appearance="fill">
+                                                <mat-label>Phone Number</mat-label>
+                                                <input type="number" [formControlName]="'text'+deviceItem.id" matInput>
+                                            </mat-form-field>
+                                        </div>
+                                    </section>
+
+                                    <div style="margin: 5px;" class="example-button-row">
+                                        <button (click)='getBack();selected = 0' mat-raised-button>Back</button>
+                                        <button style="float: right;" (click)="save()" mat-raised-button
+                                            color="primary">Save</button>
+                                    </div>
+                                    <!-- <button type="button" style="float: right;" 
+                                        (click)='getBack();selected = 0' class="btn btn-light">Back</button>
+                                        <button type="button" style="float: right;" (click)="getCheckbox()"
+                                         class="btn btn-light">Save</button> -->
+
+
+                                </mat-tab>
+                            </mat-tab-group>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

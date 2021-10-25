@@ -36,4 +36,8 @@ export class UserService {
   //   this.userSubject.next(null);
   //   this.router.navigate(['/account/login']);
 
+  getUser(user:User): Observable<User[]>{
+    console.log(user);
+    return this.http.get<User[]>('');
+  }
 }

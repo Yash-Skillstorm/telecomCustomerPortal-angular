@@ -14,6 +14,7 @@ import { MatCheckboxModule  } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
+import { NewuserComponent } from './newuser/newuser.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
     RegistrationComponent,
     AccountsummaryComponent,
     AddPlanComponent,
+    NewuserComponent,
   ],
   imports: [
     BrowserModule,   

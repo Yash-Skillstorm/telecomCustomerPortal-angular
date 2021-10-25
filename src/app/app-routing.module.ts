@@ -4,6 +4,7 @@ import { AccountsummaryComponent } from './accountsummary/accountsummary.compone
 import { AddPlanComponent } from './add-plan/add-plan.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
@@ -21,6 +22,9 @@ const routes: Routes = [
   },
   {
     path: 'addPlan', component: AddPlanComponent
+  },
+  {
+    path: 'user-details', component: UserDetailsComponent
   }
 ];
 

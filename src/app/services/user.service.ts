@@ -1,22 +1,56 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { User } from '../model/user.model';
 import { Router } from '@angular/router';
+import { catchError, tap } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+ 
+  
+  
+  [x: string]: any;
+  //headers_object: HttpHeaders;
+  
+
 
   //private userSubject: BehaviorSubject<User>;
   //public user: Observable<User>;
-  url = 'https://localhost:44305/api/Users';
+  //url = 'https://localhost:44305/api/Users';
+  url = 'https://telecomcustomerportal-application.azurewebsites.net/api/Users'
   constructor(private router: Router,
-    private http: HttpClient) {
-      let ll = localStorage.getItem('user');
+    private http: HttpClient) { 
+      
+    /*
+    var headers_object = new HttpHeaders();
+    headers_object.append('Content-Type', 'application/json');
+    headers_object.append("Authorization", "Basic " + btoa("username:password"));
+    const httpOptions = {
+      headers: headers_object
+    };*/
+    
+  }
+
+
+    addUser(user: User): Observable<number> {
+      //const headers = {'Access-Control-Allow-Origin':'*'};
+      return this.http.post<number>(this.url, user);
+
+      /*
+      const body = { title: 'Angular POST Request Example' };
+      this.http.post<any>('https://reqres.in/api/posts', body, { headers }).subscribe(data => {
+          this.postId = data.id;
+          */
+    }
+  }
+//the HTTP post request
+
       //this.userSubject = new BehaviorSubject<User>(JSON.parse());
         //this.user = this.userSubject.asObservable();
-     }
+     
 
     //  login(username : any, password: any) {
     //   return this.http.post<User>(this.url, { username, password })
@@ -27,17 +61,9 @@ export class UserService {
     //           return user;
     //       }));
   
-  find(): Observable<User[]>{
-    return this.http.get<User[]>(this.url);
-  }
+ 
   // logout() {
   //   // remove user from local storage and set current user to null
   //   localStorage.removeItem('user');
   //   this.userSubject.next(null);
   //   this.router.navigate(['/account/login']);
-
-  getUser(user:User): Observable<User[]>{
-    console.log(user);
-    return this.http.get<User[]>('');
-  }
-}

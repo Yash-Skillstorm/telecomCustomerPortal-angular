@@ -11,8 +11,9 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class UserService {
  
- url = 'https://localhost:44305/api/Users';
-  //url = 'https://telecomcustomerportal-application.azurewebsites.net/api/Users'
+
+  url = 'https://telecomcustomerportal-application.azurewebsites.net/api/Users'
+  
   constructor(private router: Router, private http: HttpClient) { 
   }
 

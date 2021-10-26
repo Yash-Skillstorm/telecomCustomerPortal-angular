@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Plan } from '../model/plan.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -20,4 +19,7 @@ export class PlanService {
   getAllPlans(): Observable<Plan[]>{
     return this.http.get<Plan[]>(this.url);
   }
+
+  
+
 }

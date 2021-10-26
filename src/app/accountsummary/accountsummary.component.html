@@ -39,6 +39,11 @@
                                             alt="Internet" style="width: 25px;margin: 15px;">
                                         <h4 class="card-subtitle" style="display: inline-block;">{{ plan.planName }}
                                         </h4>
+                                        <button class="btn btn-link" aria-label="Dismiss alert"
+                                                            type="button" (click)="deletePlan(plan);" style="float: right;
+                                                    text-decoration: none;" data-close>
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
                                         <div *ngIf="plan.device.length > 0">
                                             <div *ngFor="let dev of plan.device">
                                                 <ul class="list-group list-group-flush">
@@ -47,8 +52,8 @@
                                                             src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-tv.svg"
                                                             alt="TV"
                                                             style="width: 25px;margin: 15px;">{{dev.deviceName}}
-                                                        <button class="btn btn-link" aria-label="Dismiss alert"
-                                                            type="button" style="float: right;
+                                                        <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
+                                                            type="button" (click)="delectDevice(dev);" style="float: right;
                                                     text-decoration: none;" data-close>
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -58,8 +63,8 @@
                                                             src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-wifi.svg"
                                                             alt="Internet"
                                                             style="width: 25px;margin: 15px;">{{dev.deviceName}}
-                                                        <button class="btn btn-link" aria-label="Dismiss alert"
-                                                            type="button" style="float: right;
+                                                            <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
+                                                            type="button" (click)="delectDevice(dev);" style="float: right;
                                                     text-decoration: none;" data-close>
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -69,7 +74,7 @@
                                                             src="https://www.spectrum.net/shared-assets/services/ki-add-mobile.svg"
                                                             alt="Internet"
                                                             style="width: 25px;margin: 15px;">{{dev.deviceName}}
-                                                        <button class="btn btn-link" aria-label="Dismiss alert"
+                                                        <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
                                                             type="button" style="float: right;
                                                     text-decoration: none;" data-close>
                                                             <span aria-hidden="true">&times;</span>

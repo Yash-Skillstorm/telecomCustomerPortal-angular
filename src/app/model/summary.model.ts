@@ -1,12 +1,14 @@
 export class Summary {
-    id: number = 0;    
+    id: number = 0;
+    userId: number;   
     planId: number;
     planName: string;
     price: number;
     deviceLimit: number;
     device: [{deviceName: string}];
    
-    constructor(DeviceId: number,DeviceName: string, PlanId: number, PlanName: string, Price: number,DeviceLimit: number,Device: any) {
+    constructor( UserId:number, DeviceId: number,DeviceName: string, PlanId: number, PlanName: string, Price: number,DeviceLimit: number,Device: any) {
+        this.userId = UserId;
         this.device = Device;
         this.planId = PlanId;
         this.planName = PlanName;

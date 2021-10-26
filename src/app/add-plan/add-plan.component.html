@@ -28,14 +28,11 @@
 
                                 </mat-tab>
                                 <mat-tab label="Select Device" [disabled]='disabledVar2'>
-                                    <section style="margin-left: 15px;" class="example-section" [formGroup]="devices">
-
-                                        <div *ngFor=" let deviceItem of DeviceArray">
+                                    <section style="margin: 15px;" class="example-section" [formGroup]="devicesGrp">
+                                        <div *ngFor=" let deviceItem of deviceArray">
                                             <mat-checkbox style="font-size: 15px;" [formControlName]=deviceItem.id
                                                 (change)="onCheckboxChange($event,deviceItem)">{{deviceItem.deviceName}}
                                             </mat-checkbox>
-                                            <!-- <input type="number" [formControlName]="'text'+deviceItem.Id" class="form-control"  placeholder="number" > -->
-
                                             <mat-form-field style="margin-left: 10px;" appearance="fill">
                                                 <mat-label>Phone Number</mat-label>
                                                 <input type="number" [formControlName]="'text'+deviceItem.id" matInput>
@@ -44,16 +41,10 @@
                                     </section>
 
                                     <div style="margin: 5px;" class="example-button-row">
-                                        <button (click)='getBack();selected = 0' mat-raised-button>Back</button>
+                                        <button (click)='getBackBtn();selected = 0' mat-raised-button>Back</button>
                                         <button style="float: right;" (click)="save()" mat-raised-button
                                             color="primary">Save</button>
                                     </div>
-                                    <!-- <button type="button" style="float: right;" 
-                                        (click)='getBack();selected = 0' class="btn btn-light">Back</button>
-                                        <button type="button" style="float: right;" (click)="getCheckbox()"
-                                         class="btn btn-light">Save</button> -->
-
-
                                 </mat-tab>
                             </mat-tab-group>
                         </div>

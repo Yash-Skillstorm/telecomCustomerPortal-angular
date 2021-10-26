@@ -4,6 +4,8 @@ import { Plan } from '../model/plan.model';
 import { Summary } from '../model/summary.model';
 import { PlanService } from '../services/plan.service';
 import { SummaryService } from '../services/summary.service';
+import { UserplanService } from '../services/userplan.service';
+import { UserplandeviceService } from '../services/userplandevice.service';
 
 @Component({
   selector: 'app-accountsummary',
@@ -11,49 +13,108 @@ import { SummaryService } from '../services/summary.service';
   styleUrls: ['./accountsummary.component.css']
 })
 export class AccountsummaryComponent implements OnInit {
-  
+
   @Input() Array: any;
 
   userId: any;
   plans!: Plan[];
-  newArray!: [{ planId: number }] | any;
-  public deviceArray: Array<any> = [];
-  fakeArray: Summary[] = [];
-  headers!: [] | any;
+  deviceArray: Array<any> = [];
+  summaryArray: Summary[] = [];
   price: number = 0;
-  constructor(private planService: PlanService,private summaryService: SummaryService, private router: Router, private activeRoute: ActivatedRoute) { }
+  deleteFlag1: boolean = false;
+  deleteFlag2: boolean = false;
+  constructor(private userPlan: UserplanService, private planService: PlanService, private userPlanDevice: UserplandeviceService, private summaryService: SummaryService, private router: Router, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    
+
     this.activeRoute.data.subscribe(id => {
-      //this.userId = id;
-      // this.planService.getAllPlansByUserID(this.userId).subscribe(data =>{
-      //   this.plans = data;
-      //   console.log(data);
-      // });
       this.summaryService.getPlanDeviceBuyUserID().subscribe(data => {
+        console.log(data);
         this.planService.getAllPlans().subscribe(planData => {
 
           planData.map(planitem => {
             let filterdata = data.filter(item => {
               return item.planName == planitem.planName
             })
-            
-            if(filterdata.length != 0){
+
+            if (filterdata.length != 0) {
               this.deviceArray.push({
-                planId: planitem.id, planName: planitem.planName, device: filterdata, deviceLimit: planitem.deviceLimit, price: planitem.price
+                userId: 3, planId: planitem.id, planName: planitem.planName, device: filterdata, deviceLimit: planitem.deviceLimit, price: planitem.price
               });
               this.price += planitem.price;
             }
           });
-          this.fakeArray = this.deviceArray;        
-          
+          this.summaryArray = this.deviceArray;
+          console.log(this.deviceArray);
+
         });
       });
     });
   }
 
-  goToPage(pageName:string){
+  goToPage(pageName: string) {
     this.router.navigate([`${pageName}`]);
+  }
+
+  delectDevice(e: any): void {
+    console.log(e);
+    if (e.length != 0) {
+      this.userPlanDevice.getAllUserPlanDeviceData().subscribe(data => {
+        if (data.length != 0) {
+          data.forEach(async item => {
+            if (item.userId == 3 && item.planId == e.planId && item.deviceId == e.deviceId) {
+              console.log(item);
+              this.userPlanDevice.deleteUserPlanDeviceData(item.id).subscribe(data => {
+                this.navigatePage();
+              });
+            }
+          });
+        }
+      });
+    }
+
+  }
+
+  deletePlan(e: any): void {
+    this.deleteFlag1 = false;
+    this.deleteFlag2 = false;
+    if (e.length != 0) {
+      this.userPlanDevice.getAllUserPlanDeviceData().subscribe(data => {
+        if (data.length != 0) {
+          data.forEach(async item => {
+            if (item.userId == 3 && item.planId == e.planId) {
+              console.log(item);
+              this.userPlanDevice.deleteUserPlanDeviceData(item.id).subscribe(data => {
+                this.deleteFlag2 = true;
+                this.deleteUserPlan(e);
+
+              });
+            }
+          })
+        }
+      });
+
+    }
+  }
+  deleteUserPlan(dataItem: any): void {
+    this.userPlan.getAllUserPlanData().subscribe(data => {
+      if (data.length != 0) {
+        data.forEach(item => {
+          if (item.userId == 3 && item.planId == dataItem.planId) {
+            console.log(item);
+            this.userPlan.deleteUserPlanData(item.id).subscribe(data => {
+              this.deleteFlag1 = true;
+              if (this.deleteFlag1 && this.deleteFlag2) {
+                this.navigatePage();
+              }
+            });
+          }
+        })
+      }
+    });
+  }
+
+  navigatePage(): void {
+    location.reload();
   }
 }

@@ -14,6 +14,7 @@ import { MatCheckboxModule  } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { NewuserComponent } from './newuser/newuser.component';
 
 @NgModule({
@@ -36,7 +37,8 @@ import { NewuserComponent } from './newuser/newuser.component';
     ReactiveFormsModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

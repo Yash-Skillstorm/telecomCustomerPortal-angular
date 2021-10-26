@@ -10,40 +10,14 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class UserService {
  
-  
-  
-  [x: string]: any;
-  //headers_object: HttpHeaders;
-  
-
-
-  //private userSubject: BehaviorSubject<User>;
-  //public user: Observable<User>;
-  //url = 'https://localhost:44305/api/Users';
-  url = 'https://telecomcustomerportal-application.azurewebsites.net/api/Users'
-  constructor(private router: Router,
-    private http: HttpClient) { 
-      
-    /*
-    var headers_object = new HttpHeaders();
-    headers_object.append('Content-Type', 'application/json');
-    headers_object.append("Authorization", "Basic " + btoa("username:password"));
-    const httpOptions = {
-      headers: headers_object
-    };*/
-    
+ url = 'https://localhost:44305/api/Users';
+  //url = 'https://telecomcustomerportal-application.azurewebsites.net/api/Users'
+  constructor(private router: Router, private http: HttpClient) { 
   }
 
 
-    addUser(user: User): Observable<number> {
-      //const headers = {'Access-Control-Allow-Origin':'*'};
+    addUser(user: User): Observable<number> {      
       return this.http.post<number>(this.url, user);
-
-      /*
-      const body = { title: 'Angular POST Request Example' };
-      this.http.post<any>('https://reqres.in/api/posts', body, { headers }).subscribe(data => {
-          this.postId = data.id;
-          */
     }
   }
 //the HTTP post request

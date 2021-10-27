@@ -1,89 +1,110 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
+        <div><span style="font-size: 25px;"><b>Telecom Customer Portal</b></span></div>
+      </div>
+    </div>
+    <div class="d-flex align-items-center">
+      <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuLink"
+        role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+        <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-circle" height="25" alt=""
+          loading="lazy" />
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+        <li>
+          <a class="dropdown-item" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <div class="card-container">
-    <div class="row-md-6">
-        <div class="col-md-8 offset-md-1 mt-5">
-            <h2><b>Hello, Mike</b></h2>
-            <h4>Welcome to your Account. You're signed in with Primary access.</h4>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card full-width-card" style="width: 25rem;">
-                        <div class="card-header">
-                            Your Bill
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Amount Due</h3>
-                            <div>
-                                <span style="vertical-align: top;">$</span><span class="card-subtitle" style="font-size: 25px;vertical-align: top;
+  <div class="row-md-6">
+    <div class="col-md-8 offset-md-1 mt-5">
+      <h2><b>Hello, Mike</b></h2>
+      <h4>Welcome to your Account. You're signed in with Primary access.</h4>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card full-width-card" style="width: 25rem;">
+            <div class="card-header">
+              Your Bill
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Amount Due</h3>
+              <div>
+                <span style="vertical-align: top;">$</span><span class="card-subtitle" style="font-size: 25px;vertical-align: top;
                                 line-height: 1.95rem;">{{price}} per monthly</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card full-width-card" style="width: 25rem;">
-                        <div class="card-header">
-                            <div style="line-height: 2rem;">
-                                <span class="card-text" style="font-size: 20px;">Current Plan Enroll</span>
-                                <button type="button" (click)="goToPage('addPlan')" class="btn btn-light"
-                                    style="float: right;" data-mdb-ripple-color="dark">
-                                    <span style="font-size:15px;">+</span>
-                                </button>
-                            </div>
-                        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card full-width-card" style="width: 25rem;">
+            <div class="card-header">
+              <div style="line-height: 2rem;">
+                <span class="card-text" style="font-size: 20px;">Current Plan Enroll</span>
+                <button type="button" (click)="goToPage('addPlan')" title="Add Plan" class="btn btn-light" style="float: right;"
+                  data-mdb-ripple-color="dark">
+                  <span style="font-size:15px;">+</span>
+                </button>
+              </div>
+            </div>
 
-                        <div class="card-body">
-                            <div class="card-deck">
-                                <div class="card" *ngFor="let plan of summaryArray">
-                                    <div class="card-body">
-                                        <img class="card-img-left"
-                                            src="https://img.icons8.com/external-inipagistudio-mixed-inipagistudio/64/000000/external-plan-manufacturing-company-inipagistudio-mixed-inipagistudio.png"
-                                            alt="Internet" style="width: 25px;margin: 15px;">
-                                        <h4 class="card-subtitle" style="display: inline-block;">{{ plan.planName }}
-                                        </h4>
-                                        <button class="btn btn-link" aria-label="Dismiss alert"
-                                                            type="button" (click)="deletePlan(plan);" style="float: right;
+            <div class="card-body">
+              <div class="card-deck">
+                <div class="card" *ngFor="let plan of summaryArray">
+                  <div class="card-body">
+                    <img class="card-img-left"
+                      src="https://img.icons8.com/external-inipagistudio-mixed-inipagistudio/64/000000/external-plan-manufacturing-company-inipagistudio-mixed-inipagistudio.png"
+                      alt="Internet" style="width: 25px;margin: 15px;">
+                    <h4 class="card-subtitle" style="display: inline-block;">{{ plan.planName }}
+                    </h4>
+                    <button class="btn btn-link" title="Delete Plan" aria-label="Dismiss alert" type="button" (click)="deletePlan(plan);"
+                      style="float: right;
                                                     text-decoration: none;" data-close>
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                        <div *ngIf="plan.device.length > 0">
-                                            <div *ngFor="let dev of plan.device">
-                                                <ul class="list-group list-group-flush">
-                                                    <li *ngIf="dev.deviceName == 'TV'" class="list-group-item"><img
-                                                            class="card-img-left"
-                                                            src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-tv.svg"
-                                                            alt="TV"
-                                                            style="width: 25px;margin: 15px;">{{dev.deviceName}}
-                                                        <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
-                                                            type="button" (click)="delectDevice(dev);" style="float: right;
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div *ngIf="plan.device.length > 0">
+                      <div *ngFor="let dev of plan.device">
+                        <ul class="list-group list-group-flush">
+                          <li *ngIf="dev.deviceName == 'TV'" class="list-group-item"><img class="card-img-left"
+                              src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-tv.svg" alt="TV"
+                              style="width: 25px;margin: 15px;">{{dev.deviceName}}
+                            <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
+                              type="button" (click)="delectDevice(dev);" title="Delete Device" style="float: right;
                                                     text-decoration: none;" data-close>
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </li>
-                                                    <li *ngIf="dev.deviceName == 'Internet'" class="list-group-item">
-                                                        <img class="card-img-left"
-                                                            src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-wifi.svg"
-                                                            alt="Internet"
-                                                            style="width: 25px;margin: 15px;">{{dev.deviceName}}
-                                                            <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
-                                                            type="button" (click)="delectDevice(dev);" style="float: right;
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </li>
+                          <li *ngIf="dev.deviceName == 'Internet'" class="list-group-item">
+                            <img class="card-img-left"
+                              src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-wifi.svg" alt="Internet"
+                              style="width: 25px;margin: 15px;">{{dev.deviceName}}
+                            <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
+                              type="button" (click)="delectDevice(dev);" title="Delete Device" style="float: right;
                                                     text-decoration: none;" data-close>
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </li>
-                                                    <li *ngIf="dev.deviceName == 'Mobile'" class="list-group-item">
-                                                        <img class="card-img-left"
-                                                            src="https://www.spectrum.net/shared-assets/services/ki-add-mobile.svg"
-                                                            alt="Internet"
-                                                            style="width: 25px;margin: 15px;">{{dev.deviceName}}
-                                                        <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
-                                                            type="button" style="float: right;
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </li>
+                          <li *ngIf="dev.deviceName == 'Mobile'" class="list-group-item">
+                            <img class="card-img-left"
+                              src="https://www.spectrum.net/shared-assets/services/ki-add-mobile.svg" alt="Internet"
+                              style="width: 25px;margin: 15px;">{{dev.deviceName}}
+                            <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
+                              type="button" title="Delete Device" style="float: right; 
                                                     text-decoration: none;" data-close>
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- <ul class="list-group list-group-flush">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- <ul class="list-group list-group-flush">
                                             <li class="list-group-item"><img class="card-img-left"
                                                 src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-tv.svg"
                                                 alt="TV" style="width: 25px;margin: 15px;">Device 1</li>
@@ -91,9 +112,9 @@
                                                 src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-wifi.svg"
                                                 alt="Internet" style="width: 25px;margin: 15px;">Device 2</li>                                            
                                           </ul> -->
-                                    </div>
-                                </div>
-                                <!-- <div class="card">                                    
+                  </div>
+                </div>
+                <!-- <div class="card">                                    
                                     <div class="card-body">
                                         <img class="card-img-left"
                                         src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-wifi.svg"
@@ -109,13 +130,13 @@
                                         <h4 class="card-subtitle" style="display: inline-block;">TV</h4>
                                     </div>
                                 </div> -->
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+              </div>
             </div>
 
+          </div>
         </div>
+      </div>
+
     </div>
+  </div>
 </div>

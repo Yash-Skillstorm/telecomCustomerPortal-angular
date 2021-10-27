@@ -1,3 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
+          <div><span style="font-size: 25px;"><b>Telecom Customer Portal</b></span></div>
+        </div>
+      </div>
+      <div class="d-flex align-items-center">
+        <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuLink"
+          role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+          <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-circle" height="25" alt=""
+            loading="lazy" />
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+          <li>
+            <a class="dropdown-item" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 <div class="card-container">
     <div class="row-md-6">
         <div class="col-md-8 offset-md-1 mt-5">
@@ -5,7 +30,13 @@
                 <div class="col-md-4">
                     <div class="card full-width-card" style="width: 25rem;">
                         <div class="card-header">
-                            Upgrade Plan
+                            <div style="line-height: 2rem;">
+                                <span class="card-text" style="font-size: 20px;">Upgrade Plan</span>
+                                <button type="button" data-mdb-toggle="tooltip" title="Back"  (click)="goToPage('accountsummary')" class="btn btn-light" style="float: right;"
+                                  data-mdb-ripple-color="dark">
+                                  <span style="font-size:15px;">&lt;</span>
+                                </button>
+                              </div>
                         </div>
                         <div class="card-body">
                             <mat-tab-group [selectedIndex]="selected">
@@ -19,7 +50,7 @@
                                                     <li class="list-group-item">Device Limit: {{planArray.deviceLimit}}
                                                     </li>
                                                 </ul>
-                                                <button type="button" style="float: right;"
+                                                <button type="button" title="Select" style="float: right;"
                                                     (click)='getPlanId(planArray); selected = 1'
                                                     class="btn btn-light">Select</button>
                                             </div>
@@ -41,8 +72,8 @@
                                     </section>
 
                                     <div style="margin: 5px;" class="example-button-row">
-                                        <button (click)='getBackBtn();selected = 0' mat-raised-button>Back</button>
-                                        <button style="float: right;" (click)="save()" mat-raised-button
+                                        <button (click)='getBackBtn();selected = 0'  title="Back" mat-raised-button>Back</button>
+                                        <button style="float: right;" title="Save" (click)="save()" mat-raised-button
                                             color="primary">Save</button>
                                     </div>
                                 </mat-tab>

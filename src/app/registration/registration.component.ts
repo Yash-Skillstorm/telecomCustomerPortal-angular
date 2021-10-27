@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../model/user.model';
 import { UserService } from '../services/user.service';
 
@@ -11,13 +12,17 @@ import { UserService } from '../services/user.service';
 export class RegistrationComponent implements OnInit {
   users: User = new User('', '', '');
 
-  constructor(private fb: FormBuilder, private userService: UserService) { }
+  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
   }
   add(): void {
     this.userService.addUser(this.users).subscribe(data => {
       console.log("Added User Id: " + data);
+      let route = this.router.config.find(r => r.path === 'accountsummary');
+      if (route) {
+        this.router.navigate(['/accountsummary']);
+      }
     });
   }
 }

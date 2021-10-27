@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatToolbarModule } from '@angular/material/toolbar'
 import { NewuserComponent } from './newuser/newuser.component';
 
 @NgModule({
@@ -38,7 +39,8 @@ import { NewuserComponent } from './newuser/newuser.component';
     MatCheckboxModule,
     MatButtonModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,32 +1,26 @@
 <div class="col-md-6 offset-md-3 mt-5">
     <div class="card">
-        <h4 class="card-header">Login</h4>
+        <h4 class="card-header text-center">LOGIN</h4>
         <div class="card-body">
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" formControlName="username" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                        <div *ngIf="f.username.errors.required">Username is required</div>
-                    </div>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" id="Email" class="form-control" />
+                  <label class="form-label" for="form1Example1">Email address</label>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" formControlName="password" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Password is required</div>
-                    </div>
+              
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input type="password" id="form1Example2" class="form-control" />
+                  <label class="form-label" for="form1Example2">Password</label>
                 </div>
-                <div class="form-group">
-                    <button [disabled]="loading" class="btn btn-primary">
-                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                        Login
-                    </button>
-
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                <div class="text-center">
+                  <p>Not a member? <a class="nav-link" data-mdb-toggle="tab" role="tab" aria-controls="ex1-tabs-2" aria-selected="false"
+                    [routerLink]="['/registration']">Registration</a></p>                  
                 </div>
-            </form>
+              </form>            
         </div>
     </div>
 </div>

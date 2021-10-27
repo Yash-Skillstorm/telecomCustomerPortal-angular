@@ -13,7 +13,7 @@ const routes: Routes = [
   //   path: 'users', component: UserComponent
   // }
   {
-    path: 'login', component: LoginComponent
+    path: '', component: LoginComponent
   },
   {
     path: 'registration', component:RegistrationComponent

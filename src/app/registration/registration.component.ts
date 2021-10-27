@@ -18,10 +18,10 @@ export class RegistrationComponent implements OnInit {
   }
   add(): void {
     this.userService.addUser(this.users).subscribe(data => {
-      console.log("Added User Id: " + data);
-      let route = this.router.config.find(r => r.path === 'accountsummary');
+      console.log("Added User Id: " + data);      
+      let route = this.router.config.find(r => r.path === '');
       if (route) {
-        this.router.navigate(['/accountsummary']);
+        this.router.navigate(['']);
       }
     });
   }

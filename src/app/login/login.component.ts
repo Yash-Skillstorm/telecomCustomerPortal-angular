@@ -15,9 +15,12 @@ export class LoginComponent implements OnInit {
  
   constructor(      
       private router: Router,
-      private userService: UserService,
-
-  ) { }
+      private userService: UserService      
+  ) {
+    if (this.userService.userValue) {
+      this.router.navigate(['/']);
+  }
+   }
 
   ngOnInit() {
       
@@ -27,7 +30,7 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         
-        this.userService.getUser(this.users).subscribe(data => {
+        this.userService.login(this.users).subscribe(data => {
           console.log("Checked User Id: " + data);
           let route = this.router.config.find(r => r.path === 'accountsummary');
           if (route) {

@@ -4,14 +4,14 @@ import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/comm
 import { User } from '../model/user.model';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
- 
- url = 'https://localhost:44305/api/Users';
-  //url = 'https://telecomcustomerportal-application.azurewebsites.net/api/Users'
+
+  url = `${environment.apiURL}api/Users`;
   constructor(private router: Router, private http: HttpClient) { 
   }
 

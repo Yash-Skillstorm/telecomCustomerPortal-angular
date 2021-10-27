@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Userplandevice } from '../model/userplandevice.model';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserplandeviceService {
 
-  url ='https://localhost:44305/api/UserPlanDevices';
+  url = `${environment.apiURL}api/UserPlanDevices`; 
   constructor(private http: HttpClient) { }
 
   getAllUserPlanDeviceData(): Observable<Userplandevice[]>{

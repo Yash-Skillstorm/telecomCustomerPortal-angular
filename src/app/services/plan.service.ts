@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Plan } from '../model/plan.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlanService {
 
-  url = 'https://localhost:44305/api/Plans';
-  
+  url = `${environment.apiURL}api/Plans`; 
   constructor(private http: HttpClient) { }
 
   getAllPlansByUserID(): Observable<Plan[]>{

@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
 
 
-    onSubmit() {
+    onSubmit(): void {
         
         this.userService.login(this.users).subscribe(data => {
           console.log("Checked User Id: " + data);
@@ -38,4 +38,5 @@ export class LoginComponent implements OnInit {
           }
         });
     }
+   
 }

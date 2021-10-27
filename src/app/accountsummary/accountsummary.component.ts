@@ -2,8 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Plan } from '../model/plan.model';
 import { Summary } from '../model/summary.model';
+import { User } from '../model/user.model';
 import { PlanService } from '../services/plan.service';
 import { SummaryService } from '../services/summary.service';
+import { UserService } from '../services/user.service';
 import { UserplanService } from '../services/userplan.service';
 import { UserplandeviceService } from '../services/userplandevice.service';
 
@@ -16,20 +18,24 @@ export class AccountsummaryComponent implements OnInit {
 
   @Input() Array: any;
 
-  userId: any;
+  user!: User;
   plans!: Plan[];
   deviceArray: Array<any> = [];
   summaryArray: Summary[] = [];
   price: number = 0;
   deleteFlag1: boolean = false;
   deleteFlag2: boolean = false;
-  constructor(private userPlan: UserplanService, private planService: PlanService, private userPlanDevice: UserplandeviceService, private summaryService: SummaryService, private router: Router, private activeRoute: ActivatedRoute) { }
+  constructor(private userPlan: UserplanService, private planService: PlanService, 
+    private userPlanDevice: UserplandeviceService, private summaryService: SummaryService,
+    private userService:UserService,private router: Router, private activeRoute: ActivatedRoute) {
+      this.user = this.userService.userValue;
+     }
 
   ngOnInit(): void {
 
     this.activeRoute.data.subscribe(id => {
-      this.summaryService.getPlanDeviceBuyUserID().subscribe(data => {
-        console.log(data);
+      (this.user.id)
+      this.summaryService.getPlanDeviceBuyUserID().subscribe(data => {        
         this.planService.getAllPlans().subscribe(planData => {
 
           planData.map(planitem => {

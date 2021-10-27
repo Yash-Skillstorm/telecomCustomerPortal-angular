@@ -20,9 +20,12 @@ export class LoginComponent implements OnInit {
       private formBuilder: FormBuilder,
       private route: ActivatedRoute,
       private router: Router,
-      private userService: UserService,
-      //private alertService: AlertService
-  ) { }
+      private userService: UserService      
+  ) {
+    if (this.userService.userValue) {
+      this.router.navigate(['/']);
+  }
+   }
 
   ngOnInit() {
       
@@ -32,7 +35,7 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-
+        console.log('Hello');
         // reset alerts on submit
         //this.alertService.clear();
 

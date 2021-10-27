@@ -2,17 +2,17 @@
     <div class="card">
         <h4 class="card-header text-center">LOGIN</h4>
         <div class="card-body">
-            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <form (ngSubmit)="onSubmit()">
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input type="email" id="Email" class="form-control" />
-                  <label class="form-label" for="form1Example1">Email address</label>
+                  <input [(ngModel)]="users.email" type="email" id="Email" #Email="ngModel" class="form-control" />
+                  <label class="form-label" for="Email">Email address</label>
                 </div>
               
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                  <input type="password" id="form1Example2" class="form-control" />
-                  <label class="form-label" for="form1Example2">Password</label>
+                  <input [(ngModel)]="users.password" type="password" id="Password" #Password="ngModel" class="form-control" />
+                  <label class="form-label" for="Password">Password</label>
                 </div>
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-primary btn-block">Sign in</button>

@@ -12,17 +12,19 @@ import { UserService } from '../services/user.service';
 export class RegistrationComponent implements OnInit {
   users: User = new User('', '', '');
 
-  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
   }
   add(): void {
-    this.userService.addUser(this.users).subscribe(data => {
-      console.log("Added User Id: " + data);      
+    this.userService.addUser(this.users).subscribe(data => {     
       let route = this.router.config.find(r => r.path === '');
       if (route) {
         this.router.navigate(['']);
       }
     });
+  }
+  getBack(): void{
+    this.router.navigate(['']);
   }
 }

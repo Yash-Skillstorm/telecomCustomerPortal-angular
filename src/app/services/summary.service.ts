@@ -8,14 +8,11 @@ import { environment } from 'src/environments/environment.prod';
   providedIn: 'root'
 })
 export class SummaryService {
-
   
   url = `${environment.apiURL}api/Summaries`; 
   constructor(private http: HttpClient) { }
 
-  getPlanDeviceBuyUserID(): Observable<Summary[]> {
-    return this.http.get<Summary[]>(this.url + '/3');
-  }
-
-  
+  getPlanDeviceByUserID(id :Number): Observable<Summary[]> {
+    return this.http.get<Summary[]>(`${this.url}/${id}`);
+  }  
 }

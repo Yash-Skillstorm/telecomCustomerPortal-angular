@@ -24,10 +24,6 @@ export class UserService {
     return this.http.post<number>(this.url, user);
   }
 
-  getUser(user: User): Observable<User> {
-    return this.http.post<User>(this.login_url, user);
-  }
-
   public get userValue(): User {
     return this.userSubject.value;
   }

@@ -11,32 +11,28 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent implements OnInit {
   users: User = new User('', '', '');
-  
- 
-  constructor(      
-      private router: Router,
-      private userService: UserService      
-  ) {
+  regisFlag : boolean = false
+  constructor(private router: Router,private userService: UserService) {
     if (this.userService.userValue) {
-      this.router.navigate(['/']);
-  }
-   }
-
-  ngOnInit() {
-      
-  }
-
-
-
-    onSubmit(): void {
-        
-        this.userService.login(this.users).subscribe(data => {
-          console.log("Checked User Id: " + data);
-          let route = this.router.config.find(r => r.path === 'accountsummary');
-          if (route) {
-            this.router.navigate(['/accountsummary']);
-          }
-        });
+      this.router.navigate(['']);
     }
-   
+  }
+
+  ngOnInit() { }
+  onSubmit(): void {
+    this.regisFlag = false;
+    this.userService.login(this.users).subscribe(data => {
+      console.log("Checked User Id: " + data);
+      if(data != null){
+        let route = this.router.config.find(r => r.path === 'accountsummary');
+        if (route) {
+          this.router.navigate(['/accountsummary']);
+        }
+      }
+      else{
+        this.regisFlag = true;
+      }
+      
+    });
+  }
 }

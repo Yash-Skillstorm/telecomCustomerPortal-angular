@@ -1,28 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
+          <div><span style="font-size: 25px;"><b>Telecom Customer Portal</b></span></div>
+        </div>
+      </div>      
+    </div>
+  </nav>
 <div class="col-md-6 offset-md-3 mt-5">
-  <div class="card">
-      <h4 class="card-header text-center">LOG IN</h4>
-      <div class="card-body">
-          <form id="login" (ngSubmit)="onSubmit();" #login>
-              <div class="form-outline mb-4">                    
-                  <input [(ngModel)]="users.email" type="text" name="Email" id="Email" #Email="ngModel" class="form-control" />
-                  <label class="form-label" for="Email">Email</label>
-              </div>
-            
-              <div class="form-outline mb-4">                    
-                  <input [(ngModel)]="users.password" type="password"  name="Password" id="Password" #Password="ngModel"  class="form-control" />
-                  <label class="form-label" for="Password">Password</label>
-              </div>
-              <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-block mb-4">Log In</button>                   
-              </div>
-	            <div class="text-center" style="    font-size: 20px;
-                margin-top: 20px;">
-                  <p>Not a member? <button type="button" style="text-decoration: none;" class="btn btn-link" data-mdb-ripple-color="dark"><a style="text-decoration: none;" [routerLink]="['/registration']">SIGN UP</a></button></p>            
+    <div class="card">
+        <h4 class="card-header text-center">LOG IN</h4>
+        <div class="card-body">
+            <form id="login" (ngSubmit)="onSubmit();" #login>
+                <div class="form-outline mb-4">
+                    <input [(ngModel)]="users.email" type="text" name="Email" id="Email" #Email="ngModel"
+                        class="form-control" />
+                    <label class="form-label" for="Email">Email</label>
                 </div>
-          </form>
-      </div>
-  </div>
+
+                <div class="form-outline mb-4">
+                    <input [(ngModel)]="users.password" type="password" name="Password" id="Password"
+                        #Password="ngModel" class="form-control" />
+                    <label class="form-label" for="Password">Password</label>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Log In</button>
+                </div>
+                <div *ngIf="regisFlag"
+                    style="padding: 5px;background-color: #EFEFEA;border: 2px solid black;text-align: left;display: flex;">
+                    <i class="fas fa-exclamation-triangle" style="color: red;margin-right: 12px;margin-top: 5px;"></i>
+                    <div style="text-align: left;display: inline;">
+                        <div>
+                            <span>The info you entered doesn't match our records. Please try again or select Sign
+                                Up.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center" style="font-size: 20px;margin-top: 20px;">
+                    <p>Not a member?
+                        <button type="button" style="text-decoration: none; font-size: 20px;" class="btn btn-link"
+                            data-mdb-ripple-color="dark">
+                            <a style="text-decoration: none;" [routerLink]="['/registration']">SIGN UP</a>
+                        </button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-
-
-

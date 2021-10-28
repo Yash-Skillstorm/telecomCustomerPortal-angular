@@ -9,6 +9,8 @@ import { Userplandevice } from '../model/userplandevice.model';
 import { Userplan } from '../model/userplan.model';
 import { UserplandeviceService } from '../services/userplandevice.service';
 import { UserplanService } from '../services/userplan.service';
+import { User } from '../model/user.model';
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-add-plan',
   templateUrl: './add-plan.component.html',
@@ -26,16 +28,17 @@ export class AddPlanComponent implements OnInit {
   selected: any = 0;
   disabledVar1: boolean = false;
   disabledVar2: boolean = true;
-
   plan!: Plan[];
+  user!: User;
 
-  constructor(private userPlan: UserplanService, private planService: PlanService, private userPlanDevice: UserplandeviceService, private summaryService: SummaryService, private deviceService: DeviceService, private fb: FormBuilder, private router: Router, private activeRoute: ActivatedRoute,) {
+  constructor(private userService: UserService,private userPlan: UserplanService, private planService: PlanService, private userPlanDevice: UserplandeviceService, private summaryService: SummaryService, private deviceService: DeviceService, private fb: FormBuilder, private router: Router, private activeRoute: ActivatedRoute,) {
+    this.user = this.userService.userValue;
   }
 
   ngOnInit(): void {
     this.activeRoute.data.subscribe(id => {
       this.planService.getAllPlans().subscribe(allPlanData => {
-        this.planService.getAllPlansByUserID().subscribe(userPlanData => {
+        this.planService.getAllPlansByUserID(this.user.id).subscribe(userPlanData => {
           if (userPlanData.length != 0 && allPlanData.length != 0) {
             var tempAry: any = [];
             userPlanData.forEach(item => tempAry.push(item.id));
@@ -89,7 +92,7 @@ export class AddPlanComponent implements OnInit {
     for (const key in newTemp) {
       if (newTemp[key] && key.startsWith('text') == false) {
         this.tempArray.push({
-          userId: 3, planId: this.selectedPlanId, deviceId: parseInt(key, 10),
+          userId: this.user.id, planId: this.selectedPlanId, deviceId: parseInt(key, 10),
           phoneNumber: this.devicesGrp.get('text' + key)?.value
         });
       }

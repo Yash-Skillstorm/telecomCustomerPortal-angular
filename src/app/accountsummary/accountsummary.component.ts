@@ -32,12 +32,9 @@ export class AccountsummaryComponent implements OnInit {
      }
 
   ngOnInit(): void {
-
-    this.activeRoute.data.subscribe(id => {
-      (this.user.id)
-      this.summaryService.getPlanDeviceBuyUserID().subscribe(data => {        
+    if(this.user.id){
+      this.summaryService.getPlanDeviceByUserID(this.user.id).subscribe(data => {        
         this.planService.getAllPlans().subscribe(planData => {
-
           planData.map(planitem => {
             let filterdata = data.filter(item => {
               return item.planName == planitem.planName
@@ -45,17 +42,18 @@ export class AccountsummaryComponent implements OnInit {
 
             if (filterdata.length != 0) {
               this.deviceArray.push({
-                userId: 3, planId: planitem.id, planName: planitem.planName, device: filterdata, deviceLimit: planitem.deviceLimit, price: planitem.price
+                userId: this.user.id, planId: planitem.id, planName: planitem.planName, device: filterdata, deviceLimit: planitem.deviceLimit, price: planitem.price
               });
               this.price += planitem.price;
             }
           });
           this.summaryArray = this.deviceArray;
-          console.log(this.deviceArray);
-
         });
       });
-    });
+    }
+    else{
+
+    }     
   }
 
   goToPage(pageName: string) {
@@ -63,12 +61,11 @@ export class AccountsummaryComponent implements OnInit {
   }
 
   delectDevice(e: any): void {
-    console.log(e);
     if (e.length != 0) {
       this.userPlanDevice.getAllUserPlanDeviceData().subscribe(data => {
         if (data.length != 0) {
           data.forEach(async item => {
-            if (item.userId == 3 && item.planId == e.planId && item.deviceId == e.deviceId) {
+            if (item.userId == this.user.id && item.planId == e.planId && item.deviceId == e.deviceId) {
               console.log(item);
               this.userPlanDevice.deleteUserPlanDeviceData(item.id).subscribe(data => {
                 this.navigatePage();
@@ -88,25 +85,23 @@ export class AccountsummaryComponent implements OnInit {
       this.userPlanDevice.getAllUserPlanDeviceData().subscribe(data => {
         if (data.length != 0) {
           data.forEach(async item => {
-            if (item.userId == 3 && item.planId == e.planId) {
+            if (item.userId == this.user.id && item.planId == e.planId) {
               console.log(item);
               this.userPlanDevice.deleteUserPlanDeviceData(item.id).subscribe(data => {
                 this.deleteFlag2 = true;
                 this.deleteUserPlan(e);
-
               });
             }
           })
         }
       });
-
     }
   }
   deleteUserPlan(dataItem: any): void {
     this.userPlan.getAllUserPlanData().subscribe(data => {
       if (data.length != 0) {
         data.forEach(item => {
-          if (item.userId == 3 && item.planId == dataItem.planId) {
+          if (item.userId == this.user.id && item.planId == dataItem.planId) {
             console.log(item);
             this.userPlan.deleteUserPlanData(item.id).subscribe(data => {
               this.deleteFlag1 = true;

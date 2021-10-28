@@ -6,12 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { NewuserComponent } from './newuser/newuser.component';
 import { RegistrationComponent } from './registration/registration.component';
 
-import { UserComponent } from './user/user.component';
-
-const routes: Routes = [
-  // {
-  //   path: 'users', component: UserComponent
-  // }
+const routes: Routes = [  
   {
     path: '', component: LoginComponent
   },

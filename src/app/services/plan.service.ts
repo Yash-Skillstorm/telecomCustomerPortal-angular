@@ -12,8 +12,8 @@ export class PlanService {
   url = `${environment.apiURL}api/Plans`; 
   constructor(private http: HttpClient) { }
 
-  getAllPlansByUserID(): Observable<Plan[]>{
-    return this.http.get<Plan[]>(this.url + '/3');
+  getAllPlansByUserID(id: Number): Observable<Plan[]>{
+    return this.http.get<Plan[]>(`${this.url}/${id}`);
   }
 
   getAllPlans(): Observable<Plan[]>{

@@ -17,6 +17,11 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
   add(): void {
+    if(!this.users.name || !this.users.email || !this.users.password)
+    {
+    alert("Field Empty");
+  }
+  else{
     this.userService.addUser(this.users).subscribe(data => {     
       let route = this.router.config.find(r => r.path === '');
       if (route) {
@@ -24,6 +29,8 @@ export class RegistrationComponent implements OnInit {
       }
     });
   }
+  }
+  
   getBack(): void{
     this.router.navigate(['']);
   }

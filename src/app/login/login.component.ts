@@ -17,9 +17,16 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['']);
     }
   }
+  
 
   ngOnInit() { }
+
   onSubmit(): void {
+    if(!this.users.email || !this.users.password)
+    {
+    alert("Field Empty");
+  }
+  else{
     this.regisFlag = false;
     this.userService.login(this.users).subscribe(data => {
       console.log("Checked User Id: " + data);
@@ -35,4 +42,5 @@ export class LoginComponent implements OnInit {
       
     });
   }
+}
 }

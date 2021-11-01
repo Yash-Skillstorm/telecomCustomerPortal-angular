@@ -54,9 +54,16 @@
                 </button>
               </div>
             </div>
-
             <div class="card-body">
               <div class="card-deck">
+                <div class="card" *ngIf="summaryArray.length == 0">
+                  <div class="card-body">
+                    <p class="card-text">
+                      No Plan Enrollment.
+                    </p>
+                  </div>
+                </div>
+
                 <div class="card" *ngFor="let plan of summaryArray">
                   <div class="card-body">
                     <img class="card-img-left"
@@ -80,79 +87,53 @@
                               <img class="card-img-left"
                                 src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-phone.svg" alt="phone"
                                 style="width: 25px;margin: 15px;"><span>{{dev.phoneNumber}}</span>
-                                <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
-                                  type="button" (click)="delectDevice(dev);" title="Delete Device" style="float: right;
+                              <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
+                                type="button" (click)="delectDevice(dev);" title="Delete Device" style="float: right;
                                                         text-decoration: none;" data-close>
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>                            
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
                           </li>
                           <li *ngIf="dev.deviceName == 'Internet'" class="list-group-item">
                             <div>
-                            <img class="card-img-left"
-                              src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-wifi.svg" alt="Internet"
-                              style="width: 25px;margin: 15px;"><span>{{dev.deviceName}}</span>
                               <img class="card-img-left"
-                              src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-phone.svg" alt="phone"
-                              style="width: 25px;margin: 15px;"><span>{{dev.phoneNumber}}</span>
-                            <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
-                              type="button" (click)="delectDevice(dev);" title="Delete Device" style="float: right;
+                                src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-wifi.svg"
+                                alt="Internet" style="width: 25px;margin: 15px;"><span>{{dev.deviceName}}</span>
+                              <img class="card-img-left"
+                                src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-phone.svg" alt="phone"
+                                style="width: 25px;margin: 15px;"><span>{{dev.phoneNumber}}</span>
+                              <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
+                                type="button" (click)="delectDevice(dev);" title="Delete Device" style="float: right;
                                                     text-decoration: none;" data-close>
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
                           </li>
                           <li *ngIf="dev.deviceName == 'Mobile'" class="list-group-item">
                             <div>
-                            <img class="card-img-left"
-                              src="https://www.spectrum.net/shared-assets/services/ki-add-mobile.svg" alt="Internet"
-                              style="width: 25px;margin: 15px;"><span>{{dev.deviceName}}</span>
                               <img class="card-img-left"
-                              src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-phone.svg" alt="phone"
-                              style="width: 25px;margin: 15px;"><span>{{dev.phoneNumber}}</span>
-                            <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
-                              type="button" title="Delete Device" style="float: right; 
+                                src="https://www.spectrum.net/shared-assets/services/ki-add-mobile.svg" alt="Internet"
+                                style="width: 25px;margin: 15px;"><span>{{dev.deviceName}}</span>
+                              <img class="card-img-left"
+                                src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-phone.svg" alt="phone"
+                                style="width: 25px;margin: 15px;"><span>{{dev.phoneNumber}}</span>
+                              <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
+                                type="button" title="Delete Device" style="float: right; 
                                                     text-decoration: none;" data-close>
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
                           </li>
                         </ul>
                       </div>
                     </div>
-                    <!-- <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><img class="card-img-left"
-                                                src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-tv.svg"
-                                                alt="TV" style="width: 25px;margin: 15px;">Device 1</li>
-                                            <li class="list-group-item"><img class="card-img-left"
-                                                src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-wifi.svg"
-                                                alt="Internet" style="width: 25px;margin: 15px;">Device 2</li>                                            
-                                          </ul> -->
                   </div>
                 </div>
-                <!-- <div class="card">                                    
-                                    <div class="card-body">
-                                        <img class="card-img-left"
-                                        src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-wifi.svg"
-                                        alt="Internet" style="width: 25px;margin: 15px;">
-                                        <h4 class="card-subtitle" style="display: inline-block;">Internet</h4>
-                                    </div>
-                                </div>
-                                <div class="card">                                    
-                                    <div class="card-body">
-                                        <img class="card-img-left"
-                                        src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-tv.svg"
-                                        alt="TV" style="width: 25px;margin: 15px;">
-                                        <h4 class="card-subtitle" style="display: inline-block;">TV</h4>
-                                    </div>
-                                </div> -->
               </div>
             </div>
-
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

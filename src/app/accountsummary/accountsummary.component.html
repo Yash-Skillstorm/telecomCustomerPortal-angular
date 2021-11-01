@@ -26,7 +26,7 @@
 <div class="card-container">
   <div class="row-md-6">
     <div class="col-md-8 offset-md-1 mt-5">
-      <h2><b>Hello, Mike</b></h2>
+      <h2><b>Hello, {{user.name}}</b></h2>
       <h4>Welcome to your Account. You're signed in with Primary access.</h4>
       <div class="row">
         <div class="col-md-6">
@@ -48,8 +48,8 @@
             <div class="card-header">
               <div style="line-height: 2rem;">
                 <span class="card-text" style="font-size: 20px;">Current Plan Enroll</span>
-                <button type="button" (click)="goToPage('addPlan')" title="Add Plan" class="btn btn-light" style="float: right;"
-                  data-mdb-ripple-color="dark">
+                <button type="button" (click)="goToPage('addPlan')" title="Add Plan" class="btn btn-light"
+                  style="float: right;" data-mdb-ripple-color="dark">
                   <span style="font-size:15px;">+</span>
                 </button>
               </div>
@@ -64,42 +64,58 @@
                       alt="Internet" style="width: 25px;margin: 15px;">
                     <h4 class="card-subtitle" style="display: inline-block;">{{ plan.planName }}
                     </h4>
-                    <button class="btn btn-link" title="Delete Plan" aria-label="Dismiss alert" type="button" (click)="deletePlan(plan);"
-                      style="float: right;
+                    <button class="btn btn-link" title="Delete Plan" aria-label="Dismiss alert" type="button"
+                      (click)="deletePlan(plan);" style="float: right;
                                                     text-decoration: none;" data-close>
                       <span aria-hidden="true">&times;</span>
                     </button>
                     <div *ngIf="plan.device.length > 0">
                       <div *ngFor="let dev of plan.device">
                         <ul class="list-group list-group-flush">
-                          <li *ngIf="dev.deviceName == 'TV'" class="list-group-item"><img class="card-img-left"
-                              src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-tv.svg" alt="TV"
-                              style="width: 25px;margin: 15px;">{{dev.deviceName}}
-                            <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
-                              type="button" (click)="delectDevice(dev);" title="Delete Device" style="float: right;
-                                                    text-decoration: none;" data-close>
-                              <span aria-hidden="true">&times;</span>
-                            </button>
+                          <li *ngIf="dev.deviceName == 'TV'" class="list-group-item">
+                            <div>
+                              <img class="card-img-left"
+                                src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-tv.svg" alt="TV"
+                                style="width: 25px;margin: 15px;"><span>{{dev.deviceName}}</span>
+                              <img class="card-img-left"
+                                src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-phone.svg" alt="phone"
+                                style="width: 25px;margin: 15px;"><span>{{dev.phoneNumber}}</span>
+                                <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
+                                  type="button" (click)="delectDevice(dev);" title="Delete Device" style="float: right;
+                                                        text-decoration: none;" data-close>
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>                            
                           </li>
                           <li *ngIf="dev.deviceName == 'Internet'" class="list-group-item">
+                            <div>
                             <img class="card-img-left"
                               src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-wifi.svg" alt="Internet"
-                              style="width: 25px;margin: 15px;">{{dev.deviceName}}
+                              style="width: 25px;margin: 15px;"><span>{{dev.deviceName}}</span>
+                              <img class="card-img-left"
+                              src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-phone.svg" alt="phone"
+                              style="width: 25px;margin: 15px;"><span>{{dev.phoneNumber}}</span>
                             <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
                               type="button" (click)="delectDevice(dev);" title="Delete Device" style="float: right;
                                                     text-decoration: none;" data-close>
                               <span aria-hidden="true">&times;</span>
                             </button>
+                          </div>
                           </li>
                           <li *ngIf="dev.deviceName == 'Mobile'" class="list-group-item">
+                            <div>
                             <img class="card-img-left"
                               src="https://www.spectrum.net/shared-assets/services/ki-add-mobile.svg" alt="Internet"
-                              style="width: 25px;margin: 15px;">{{dev.deviceName}}
+                              style="width: 25px;margin: 15px;"><span>{{dev.deviceName}}</span>
+                              <img class="card-img-left"
+                              src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-phone.svg" alt="phone"
+                              style="width: 25px;margin: 15px;"><span>{{dev.phoneNumber}}</span>
                             <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
                               type="button" title="Delete Device" style="float: right; 
                                                     text-decoration: none;" data-close>
                               <span aria-hidden="true">&times;</span>
                             </button>
+                          </div>
                           </li>
                         </ul>
                       </div>

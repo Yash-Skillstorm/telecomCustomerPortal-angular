@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PlanService } from '../services/plan.service';
 import { Plan } from '../model/plan.model';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DeviceService } from '../services/device.service';
 import { SummaryService } from '../services/summary.service';
 import { Userplandevice } from '../model/userplandevice.model';
@@ -55,8 +55,8 @@ export class AddPlanComponent implements OnInit {
       if (deviceData.length != 0) {
         this.deviceArray = deviceData;
         this.deviceArray.forEach((item: any) => {
-          this.devicesGrp.addControl(item.id, new FormControl(false));
-          this.devicesGrp.addControl("text" + item.id, new FormControl({ value: '', disabled: true }));
+          this.devicesGrp.addControl(item.id, new FormControl(false, Validators.required));
+          this.devicesGrp.addControl("text" + item.id, new FormControl({ value: '', disabled: true}, Validators.required ));
         });
       }
       else {
@@ -89,6 +89,7 @@ export class AddPlanComponent implements OnInit {
     var newTemp = this.devicesGrp.value;
     var duplicatedValue: boolean = false;
     var deviceLimitFlag: boolean = false;
+    var phoneValidFlag: boolean = false;
     for (const key in newTemp) {
       if (newTemp[key] && key.startsWith('text') == false) {
         this.tempArray.push({
@@ -99,7 +100,7 @@ export class AddPlanComponent implements OnInit {
     }
     console.log(this.tempArray);
     this.plan.forEach(planItem => {
-      if (planItem.deviceLimit != this.tempArray.length && planItem.id == this.tempArray[0].planId) {
+      if (this.tempArray.length > planItem.deviceLimit && planItem.id == this.tempArray[0].planId) {
         deviceLimitFlag = true;
         return;
       }
@@ -110,18 +111,25 @@ export class AddPlanComponent implements OnInit {
       if (this.tempArray.length != 0) {
         this.tempArray.forEach((element: any) => {
           this.tempArray.forEach((elementItem: any) => {
-            if (element.phoneNumber == elementItem.phoneNumber && element.deviceId != elementItem.deviceId) {
-              duplicatedValue = true;
-              return;
-            }
+            if(element.phoneNumber != '' && element.phoneNumber != null){              
+              if (element.phoneNumber == elementItem.phoneNumber && element.deviceId != elementItem.deviceId) {
+                duplicatedValue = true;
+                return;
+              }
+            }else{
+              phoneValidFlag = true
+            }            
           });
         });
       }
     }
+    if(phoneValidFlag != false){
+      alert("Input Field should not be Empty!!");
+    }
     var cnt: number = 0;
-    if (this.tempArray.lenght != 0 && deviceLimitFlag == false) {
+    if (this.tempArray.length != 0 && deviceLimitFlag == false && phoneValidFlag == false) {
       if (duplicatedValue != false) {
-        alert("Please select Unique values");
+        alert("Please select Unique Phone Number");
       }
       else {
         this.usersPlansArray.userId = this.tempArray[0].userId;

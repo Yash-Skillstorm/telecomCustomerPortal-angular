@@ -35,11 +35,12 @@ export class AccountsummaryComponent implements OnInit {
     if(this.user.id){
       this.summaryService.getPlanDeviceByUserID(this.user.id).subscribe(data => {        
         this.planService.getAllPlans().subscribe(planData => {
+          console.log(data)
+          console.log(planData)
           planData.map(planitem => {
             let filterdata = data.filter(item => {
               return item.planName == planitem.planName
-            })
-
+            });            
             if (filterdata.length != 0) {
               this.deviceArray.push({
                 userId: this.user.id, planId: planitem.id, planName: planitem.planName, device: filterdata, deviceLimit: planitem.deviceLimit, price: planitem.price
@@ -48,6 +49,7 @@ export class AccountsummaryComponent implements OnInit {
             }
           });
           this.summaryArray = this.deviceArray;
+          console.log(this.deviceArray)
         });
       });
     }

@@ -4,7 +4,7 @@
     <ng-container>
       <mat-icon>language</mat-icon>
       <button mat-button [matMenuTriggerFor]="menu">
-        <!-- {{siteLanguage}} -->
+        {{siteLanguage}}
         <mat-icon>arrow_drop_down</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
@@ -23,32 +23,31 @@
                         <mat-label i18n="@@emailHeader">Email</mat-label>
                         <input matInput [(ngModel)]="users.email" type="text" name="Email" id="Email" required
                             #Email="ngModel" class="form-control" />
-                        <mat-error *ngIf="Email.invalid">Email is required</mat-error>
+                        <mat-error i18n="@@emailRequired" *ngIf="Email.invalid">Email is required</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="form-outline mb-4">
                     <mat-form-field style="margin-left: 85px; width:80%" appearance="standard">
-                        <mat-label>Password</mat-label>
+                        <mat-label i18n="@@passwordHeader">Password</mat-label>
                         <input matInput [(ngModel)]="users.password" type="password" name="Password" id="Password"
                             required #Password="ngModel" class="form-control" />
-                        <mat-error *ngIf="Password.invalid">Password is required</mat-error>
+                        <mat-error i18n="@@passwordRequired" *ngIf="Password.invalid">Password is required</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="form-group" style="width: 55%;margin-left: 175px;">
-                    <button type="submit" class="btn btn-primary btn-block mb-4">Log In</button>
+                    <button i18n="@@loginButton" type="submit" class="btn btn-primary btn-block mb-4">Log In</button>
                 </div>
                 <div *ngIf="regisFlag"
                     style="padding: 5px;background-color: #EFEFEA;border: 2px solid black;text-align: left;display: flex;">
                     <i class="fas fa-exclamation-triangle" style="color: red;margin-right: 12px;margin-top: 5px;"></i>
                     <div style="text-align: left;display: inline;">
                         <div>
-                            <span>The info you entered doesn't match our records. Please try again or select Sign
-                                Up.</span>
+                            <span i18n="@@invalidMsg">The info you entered doesn't match our records. Please try again or select Sign Up.</span>
                         </div>
                     </div>
                 </div>
                 <div class="text-center" style="font-size: 20px;margin-top: 20px;">
-                    <p>Not a member?
+                    <p i18n="@@notAMember">Not a member?
                         <button type="button" style="text-decoration: none; font-size: 20px;" class="btn btn-link"
                             data-mdb-ripple-color="dark">
                             <a style="text-decoration: none;" [routerLink]="['/registration']">SIGN UP</a>

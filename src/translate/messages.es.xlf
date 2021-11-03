@@ -18,6 +18,62 @@
           <context context-type="linenumber">23</context>
         </context-group>           
       </trans-unit>
+      <trans-unit id="emailRequired" datatype="html">
+        <source>Email is required</source>
+        <target>correo electronico es requerido</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>           
+      </trans-unit>
+      <trans-unit id="passwordHeader" datatype="html">
+        <source>Password</source>
+        <target>Contraseña</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>           
+      </trans-unit>
+      <trans-unit id="passwordRequired" datatype="html">
+        <source>Password is required</source>
+        <target>se requiere contraseña</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>           
+      </trans-unit>
+      <trans-unit id="loginButton" datatype="html">
+        <source>Log In</source>
+        <target>Iniciar sesión</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>           
+      </trans-unit>
+      <trans-unit id="invalidMsg" datatype="html">
+        <source>The info you entered doesn't match our records. Please try again or select Sign Up.</source>
+        <target>La información que ingresó no coincide con nuestros registros. Vuelva a intentarlo o seleccione Registrarse.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>           
+      </trans-unit>
+      <trans-unit id="notAMember" datatype="html">
+        <source>Not a member?</source>
+        <target>¿No es un miembro?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>           
+      </trans-unit>
+      <trans-unit id="signUpButton" datatype="html">
+        <source>SIGN UP</source>
+        <target>INSCRIBIRSE</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/login/login.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>           
+      </trans-unit>
     </body>
   </file>
 </xliff>

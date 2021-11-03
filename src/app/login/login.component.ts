@@ -12,12 +12,12 @@ import { UserService } from '../services/user.service';
 export class LoginComponent implements OnInit {
   users: User = new User('', '', '');
   regisFlag : boolean = false;
-  siteLanguage: string = 'English';
-  siteLocale: string = '';
-  languageList = [
-    { code: '', label: 'English' },
-    { code: 'es', label: 'Spanish' }    
-  ];
+  // siteLanguage: string = 'English';
+  // siteLocale: string = '';
+  // languageList = [
+  //   { code: '', label: 'English' },
+  //   { code: 'es', label: 'Spanish' }    
+  // ];
   constructor(private router: Router,private userService: UserService) {
     if (this.userService.userValue) {
       this.router.navigate(['']);
@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
   }  
 
   ngOnInit() { 
-    this.siteLocale = window.location.pathname.split('/')[1];
-    this.siteLanguage = this.languageList.filter(f => f.code === this.siteLocale)[0].label;
+    //this.siteLocale = window.location.pathname.split('/')[1];
+    //this.siteLanguage = this.languageList.filter(f => f.code === this.siteLocale)[0].label;
   }
 
   onSubmit(): void {

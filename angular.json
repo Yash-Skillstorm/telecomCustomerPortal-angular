@@ -7,6 +7,15 @@
   "newProjectRoot": "projects",
   "projects": {
     "telecomCustomerPortal-angular": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "es": {
+            "translation": "src/translate/messages.es.xlf",
+            "baseHref": ""
+          }
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -57,6 +66,11 @@
               ],
               "outputHashing": "all"
             },
+            "es": {
+              "localize": ["es"],
+              "outputPath": "dist/es/",
+              "i18nMissingTranslation": "error"
+            },            
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -73,6 +87,9 @@
           "configurations": {
             "production": {
               "browserTarget": "telecomCustomerPortal-angular:build:production"
+            },
+            "es": {
+              "browserTarget": "telecomCustomerPortal-angular:build:es"
             },
             "development": {
               "browserTarget": "telecomCustomerPortal-angular:build:development"

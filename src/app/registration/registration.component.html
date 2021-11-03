@@ -1,18 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-            data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
-                <div><span style="font-size: 25px;"><b>Telecom Customer Portal</b></span></div>
-            </div>
-        </div>
-    </div>
-</nav>
-
+<mat-toolbar class="nav-bar mat-elevation-z2">
+    <mat-label>Telecom Customer Portal</mat-label>
+    <span style="flex: 1 1 auto;"></span>    
+</mat-toolbar>
 <div class="col-md-6 offset-md-3 mt-5">
     <div class="card">
         <h4 class="card-header text-center">SIGN UP</h4>
@@ -49,11 +38,11 @@
                 </div>
                 </div>
                 <div class="form-group">
-                    <div class="row">
-                        <div class="col-6">
+                    <div class="row" style="justify-content: center;">
+                        <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block mb-4" (click)="getBack()">Cancel</button>
                         </div>
-                        <div class="col-6">
+                        <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
                         </div>
                     </div>
@@ -62,6 +51,6 @@
         </div>
     </div>
 </div>
-<div style="text-align: center;">
+<!-- <div style="text-align: center;">
     <img src="https://i1.wp.com/www.encompass-inc.com/wp-content/uploads/2018/07/customer-service-portals.jpg?resize=1140%2C400&ssl=1"/>
-</div>
+</div> -->

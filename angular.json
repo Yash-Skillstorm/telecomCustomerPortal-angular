@@ -8,8 +8,12 @@
   "projects": {
     "telecomCustomerPortal-angular": {
       "i18n": {
+        "sourceLocale": "en-US",
         "locales": {
-          "es": "src/translate/messages.es.xlf"          
+          "es": {
+            "translation": "src/translate/messages.es.xlf",
+            "baseHref": ""
+          }
         }
       },
       "projectType": "application",
@@ -63,7 +67,9 @@
               "outputHashing": "all"
             },
             "es": {
-              "localize": ["es"]
+              "localize": ["es"],
+              "outputPath": "dist/es/",
+              "i18nMissingTranslation": "error"
             },            
             "development": {
               "buildOptimizer": false,

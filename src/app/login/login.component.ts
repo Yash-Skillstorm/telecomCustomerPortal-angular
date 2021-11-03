@@ -13,9 +13,9 @@ export class LoginComponent implements OnInit {
   users: User = new User('', '', '');
   regisFlag : boolean = false;
   siteLanguage: string = 'English';
-  siteLocale!: string;
-  languageList: any = [
-    { code: 'en', label: 'English' },
+  siteLocale: string = '';
+  languageList = [
+    { code: '', label: 'English' },
     { code: 'es', label: 'Spanish' }    
   ];
   constructor(private router: Router,private userService: UserService) {
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { 
     this.siteLocale = window.location.pathname.split('/')[1];
-    //this.siteLanguage = this.languageList.find((f: any) => f.code === this.siteLocale).label;
+    this.siteLanguage = this.languageList.filter(f => f.code === this.siteLocale)[0].label;
   }
 
   onSubmit(): void {

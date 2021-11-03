@@ -4,7 +4,7 @@
     <body>
       <trans-unit id="introductionHeader" datatype="html">
         <source>LOG IN</source>
-        <target>Iniciar sesión</target>
+        <target>LOG IN</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">18</context>
@@ -12,7 +12,7 @@
       </trans-unit>
       <trans-unit id="emailHeader" datatype="html">
         <source>Email</source>
-        <target>Correo electrónico</target>
+        <target>Email</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">23</context>
@@ -20,7 +20,7 @@
       </trans-unit>
       <trans-unit id="emailRequired" datatype="html">
         <source>Email is required</source>
-        <target>correo electronico es requerido</target>
+        <target>Email is required</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">26</context>
@@ -28,7 +28,7 @@
       </trans-unit>
       <trans-unit id="passwordHeader" datatype="html">
         <source>Password</source>
-        <target>Contraseña</target>
+        <target>Password</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">31</context>
@@ -36,7 +36,7 @@
       </trans-unit>
       <trans-unit id="passwordRequired" datatype="html">
         <source>Password is required</source>
-        <target>se requiere contraseña</target>
+        <target>Password is required</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">34</context>
@@ -44,7 +44,7 @@
       </trans-unit>
       <trans-unit id="loginButton" datatype="html">
         <source>Log In</source>
-        <target>Iniciar sesión</target>
+        <target>Log In</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">38</context>
@@ -52,15 +52,15 @@
       </trans-unit>
       <trans-unit id="invalidMsg" datatype="html">
         <source>The info you entered doesn't match our records. Please try again or select Sign Up.</source>
-        <target>La información que ingresó no coincide con nuestros registros. Vuelva a intentarlo o seleccione Registrarse.</target>
+        <target>The info you entered doesn't match our records. Please try again or select Sign Up.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">45</context>
         </context-group>           
       </trans-unit>
       <trans-unit id="notAMember" datatype="html">
-        <source>Not a member?</source>        
-        <target>¿No es un miembro?</target>       
+        <source>Not a member?</source>
+        <target>Not a member?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">50</context>
@@ -68,7 +68,7 @@
       </trans-unit>
       <trans-unit id="signUpButton" datatype="html">
         <source>SIGN UP</source>
-        <target>INSCRIBIRSE</target>
+        <target>SIGN UP</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">53</context>

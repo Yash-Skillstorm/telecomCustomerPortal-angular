@@ -72,10 +72,10 @@
                     <div *ngIf="plan.device.length > 0">
                       <div *ngFor="let dev of plan.device">
                         <ul class="list-group list-group-flush">
-                          <li *ngIf="dev.deviceName == 'TV'" class="list-group-item">
+                          <li *ngIf="dev.deviceName == 'Mobile'" class="list-group-item">
                             <div>
                               <img class="card-img-left"
-                                src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-tv.svg" alt="TV"
+                                src="https://img.icons8.com/ios-glyphs/30/000000/iphone.png" alt="TV"
                                 style="width: 25px;margin: 15px;"><span>{{dev.deviceName}}</span>
                               <img class="card-img-left"
                                 src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-phone.svg" alt="phone"
@@ -87,10 +87,10 @@
                               </button>
                             </div>
                           </li>
-                          <li *ngIf="dev.deviceName == 'Internet'" class="list-group-item">
+                          <li *ngIf="dev.deviceName == 'Tablets'" class="list-group-item">
                             <div>
                               <img class="card-img-left"
-                                src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-wifi.svg"
+                                src="https://img.icons8.com/glyph-neue/80/000000/ipad.png"
                                 alt="Internet" style="width: 25px;margin: 15px;"><span>{{dev.deviceName}}</span>
                               <img class="card-img-left"
                                 src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-phone.svg" alt="phone"
@@ -102,11 +102,11 @@
                               </button>
                             </div>
                           </li>
-                          <li *ngIf="dev.deviceName == 'Mobile'" class="list-group-item">
+                          <li *ngIf="dev.deviceName == 'Smart Watch'" class="list-group-item">
                             <div>
                               <img class="card-img-left"
-                                src="https://www.spectrum.net/shared-assets/services/ki-add-mobile.svg" alt="Internet"
-                                style="width: 25px;margin: 15px;"><span>{{dev.deviceName}}</span>
+                                src="https://img.icons8.com/external-justicon-lineal-justicon/64/000000/external-smart-watch-fitness-and-gym-justicon-lineal-justicon.png" alt="Internet"
+                                style="width: 20px;margin: 15px;"><span>{{dev.deviceName}}</span>
                               <img class="card-img-left"
                                 src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-phone.svg" alt="phone"
                                 style="width: 25px;margin: 15px;"><span>{{dev.phoneNumber}}</span>

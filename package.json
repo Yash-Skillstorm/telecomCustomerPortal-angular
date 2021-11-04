@@ -6,7 +6,7 @@
     "start": "ng serve",
     "start:es": "ng serve --configuration=es",
     "build": "ng build",
-    "build:es": "ng build --configuration=es",    
+    "build:es": "ng build --configuration=es",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "i18n:extract": "ng xi18n --output-path src/locale"

@@ -69,7 +69,7 @@ export class AccountsummaryComponent implements OnInit {
           data.forEach(async item => {
             if (item.userId == this.user.id && item.planId == e.planId && item.deviceId == e.deviceId) {
               console.log(item);
-              this.userPlanDevice.deleteUserPlanDeviceData(item.id).subscribe(data => {
+              this.userPlanDevice.deleteUserPlanDeviceData(item.id).subscribe(data => {                
                 this.navigatePage();
               });
             }
@@ -118,6 +118,9 @@ export class AccountsummaryComponent implements OnInit {
   }
 
   navigatePage(): void {
-    location.reload();
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
   }
 }

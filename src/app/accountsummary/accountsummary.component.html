@@ -111,7 +111,7 @@
                                 src="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/ki-phone.svg" alt="phone"
                                 style="width: 25px;margin: 15px;"><span>{{dev.phoneNumber}}</span>
                               <button *ngIf="plan.device.length > 1" class="btn btn-link" aria-label="Dismiss alert"
-                                type="button" title="Delete Device" style="float: right; 
+                                type="button" (click)="delectDevice(dev);" title="Delete Device" style="float: right; 
                                                     text-decoration: none;" data-close>
                                 <span aria-hidden="true">&times;</span>
                               </button>

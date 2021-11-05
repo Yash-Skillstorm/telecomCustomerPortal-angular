@@ -101,12 +101,12 @@ export class AddPlanComponent implements OnInit {
     console.log(this.tempArray);
     this.plan.forEach(planItem => {
       if (this.tempArray.length > planItem.deviceLimit && planItem.id == this.tempArray[0].planId) {
-        deviceLimitFlag = true;
+        deviceLimitFlag = true;        
         return;
       }
     });
     if (deviceLimitFlag != false) {
-      alert("Device Limit is " + this.plan[0].deviceLimit);
+      alert("You have selected Devices more than Device Limit");
     } else {
       if (this.tempArray.length != 0) {
         this.tempArray.forEach((element: any) => {
